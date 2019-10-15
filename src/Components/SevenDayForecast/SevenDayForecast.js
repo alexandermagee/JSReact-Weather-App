@@ -7,13 +7,20 @@ import {todayDate} from '../../Util/Helpers';
 
 export class SevenDayForecast extends React.Component {
     render() {
+        const weekdayHeaders = todayDate.weekdayTable;
+        const temperatures = todayDate.dailyTemperature;
         return (
               <div>
                   <h1>{this.props.ForecastType}</h1>
                   <h2>{this.props.Location}</h2>
-                  <ul>
-                      {todayDate.weekdayList}
-                  </ul>
+                  <table>
+                      <tr>
+                          {weekdayHeaders}
+                      </tr>
+                      <tr>
+                          {temperatures}
+                      </tr>
+                  </table>
               </div>
         )
     }
