@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const todayDate = {
+export const sevenDayCalculations = {
     weekdayIndex: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"],
   
   get currentDay () {
@@ -24,9 +24,9 @@ export const todayDate = {
     return this.currentIndex.map(day => <th>{day}</th>);
 },
 
-dailyTemperature (location) {
+dailyData (location,dataType) {
     const weekdayHeaders = this.currentIndex;
-    return weekdayHeaders.map(day => <td>{dummyData[day].temperature}°</td>);
+    return weekdayHeaders.map(day => <td>{dummyData[location][day][dataType]}</td>);
 }
 
 }
@@ -137,7 +137,7 @@ export const dummyData = {
         temperature: 18,
         precipitation: 80,
         wind: 29,
-        description: "Heavy Rain"
+        description: "Sunny"
     },
     Wednesday: {
         temperature: 17,
@@ -209,3 +209,4 @@ export const dummyData = {
     },
 }
 }
+
