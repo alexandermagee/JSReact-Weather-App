@@ -40,10 +40,10 @@ export const oneDayCalculations = {
       return (Object.keys(oneDayDummyData.London)).sort((a,b)=>a-b).map(hour => <th>{hour}</th>)
     },
 
-  hourlyData (location,dataType,hour) {
+ /* hourlyData (location,dataType,hour) {
     let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);
     return oneDayDummyData[location][hour][requestedDataIndex];
-  },
+  }, */
 
   hourlyDataArray (location,dataType,hour) {
     let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);

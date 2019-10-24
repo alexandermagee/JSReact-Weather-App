@@ -11,7 +11,7 @@ export class AppContainer extends React.Component {
         this.state = {
             ForecastType: "",
             Location: "London",
-            OneDayForecastData: {}
+            OneDayForecastData: []
         }
     }
 
@@ -39,7 +39,7 @@ export class AppContainer extends React.Component {
             <SearchBar selectLocation={this.selectLocation} />
             <ForecastType selectForecastType={this.selectForecastType} />
             <SevenDayForecast Location={this.state.Location} ForecastType={this.state.ForecastType} />
-            <OneDayForecast Location={this.state.Location} ForecastType={this.state.ForecastType} updateOneDayData={this.updateOneDayData} />
+            <OneDayForecast Location={this.state.Location} ForecastType={this.state.ForecastType} updateOneDayData={this.updateOneDayData} OneDayForecastData={this.state.OneDayForecastData}/>
             </div>
         )
     }
