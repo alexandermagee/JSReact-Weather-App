@@ -34,7 +34,7 @@ dailyData (location,dataType) {
 
 export const oneDayCalculations = {
     
-  dataTypeIndex: ["temperature","precipitation","wind","description"],
+  dataTypeIndex : ["temperature","precipitation","wind","description"],
   
   get hoursList () {
       return (Object.keys(oneDayDummyData.London)).sort((a,b)=>a-b).map(hour => <th>{hour}</th>)
@@ -42,14 +42,20 @@ export const oneDayCalculations = {
 
   hourlyData (location,dataType,hour) {
     let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);
-    let hoursInDay = (Object.keys(oneDayDummyData.London)).sort((a,b)=>a-b).map(hour => hour); 
-    let newStateObject = {};
-    for(let i=0; i<hoursInDay.length; i++) {
-    return {
-      hour : oneDayDummyData[location][hour][requestedDataIndex] 
+    return oneDayDummyData[location][hour][requestedDataIndex];
+  },
+
+  hourlyDataArray (location,dataType,hour) {
+    let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);
+    let hoursInDay = Object.keys(oneDayDummyData.London).sort((a,b)=>a-b).map(hour => hour); 
+    let collectedArray= []
+    for(let i=0; i<hoursInDay.length;i++){
+      let currentHour = hoursInDay[i];
+      collectedArray.push(oneDayDummyData[location][currentHour][requestedDataIndex]) 
     }
+    return collectedArray.map(data => <td>{data}</td>)
   }
 }
 
-}
+
 
