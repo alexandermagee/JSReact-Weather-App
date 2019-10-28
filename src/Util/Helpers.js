@@ -3,6 +3,8 @@ import {sevenDayDummyData, oneDayDummyData} from './DummyData'
 
 export const sevenDayCalculations = {
     weekdayIndex: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"],
+
+    dataTypeIndex : ["temperature","precipitation","wind","description"],
   
   get currentDay () {
     let today = new Date();

@@ -11,13 +11,20 @@ export class AppContainer extends React.Component {
         this.state = {
             ForecastType: "",
             Location: "London",
-            OneDayForecastData: []
+            OneDayForecastData: [],
+            SevenDayForecastData: ""
         }
     }
 
     updateOneDayData = newData => {
         this.setState({
             OneDayForecastData: newData
+        })
+    }
+
+    updateSevenDayData = newData => {
+        this.setState({
+            SevenDayForecastData: newData
         })
     }
 
@@ -36,10 +43,22 @@ export class AppContainer extends React.Component {
     render() {
         return (
             <div>
+
             <SearchBar selectLocation={this.selectLocation} />
+
             <ForecastType selectForecastType={this.selectForecastType} />
-            <SevenDayForecast Location={this.state.Location} ForecastType={this.state.ForecastType} />
-            <OneDayForecast Location={this.state.Location} ForecastType={this.state.ForecastType} updateOneDayData={this.updateOneDayData} OneDayForecastData={this.state.OneDayForecastData}/>
+
+            <SevenDayForecast 
+            Location={this.state.Location} 
+            ForecastType={this.state.ForecastType}
+            updateSevenDayData={this.updateSevenDayData} 
+            SevenDayForecast={this.state.SevenDayForecastData} />
+
+            <OneDayForecast Location={this.state.Location} 
+            ForecastType={this.state.ForecastType} 
+            updateOneDayData={this.updateOneDayData} 
+            OneDayForecastData={this.state.OneDayForecastData}/>
+
             </div>
         )
     }

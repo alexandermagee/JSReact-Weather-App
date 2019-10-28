@@ -6,49 +6,24 @@ import {sevenDayCalculations} from '../../Util/Helpers';
 /*const neutralWeather = "" */
 
 export class SevenDayForecast extends React.Component {
-    /*constructor(props){
-        super(props);
-        this.state = {
-            currentLocation: this.props.Location,
-            weekdayHeaders: "",
-            temperatureData: "",
-            precipitationData: "",
-            windData: "",
-            description: ""
-        }
-    }
+
     componentDidMount() {
-        this.setState({
-            weekdayHeaders: sevenDayCalculations.weekdayTable,
-            temperatureData: sevenDayCalculations.dailyData(this.state.currentLocation,"temperature"),
-            precipitationData: sevenDayCalculations.dailyData(this.state.currentLocation,"precipitation"),
-            windData: sevenDayCalculations.dailyData(this.state.currentLocation,"wind"),
-            description: sevenDayCalculations.dailyData(this.state.currentLocation,"description")
-        })
+        /* let currentLocation = this.props.Location;
+        let collectedData
+        let weekdayHeaders = sevenDayCalculations.weekdayTable;
+        for(let i=0; i<3; i++){
+            let currentDataType = sevenDayCalculations.dataTypeIndex[i];
+            let rowOfData = sevenDayCalculations.dailyData(currentLocation,currentDataType);
+            collectedData.push(rowOfData) 
+        }
+        let collectedDataArray = collectedData.map(a=> a); */
+        this.props.updateSevenDayData("hello");
     }
 
-    handleChange = e => {
-        let newLocation = e.target.value;
-        this.setState({
-            currentLocation: newLocation,
-            weekdayHeaders: sevenDayCalculations.weekdayTable,
-            temperatureData: sevenDayCalculations.dailyData(newLocation,"temperature"),
-            precipitationData: sevenDayCalculations.dailyData(newLocation,"precipitation"),
-            windData: sevenDayCalculations.dailyData(newLocation,"wind"),
-            description: sevenDayCalculations.dailyData(newLocation,"description")
-        })
-    } 
-
-  /*componentDidUpdate(){
-        /*if(prevState.currentLocation !== this.state.currentLocation){ */
-            /*this.setState({
-                weekdayHeaders: sevenDayCalculations.weekdayTable,
-                temperatureData: sevenDayCalculations.dailyData(this.state.currentLocation,"temperature"),
-                precipitationData: sevenDayCalculations.dailyData(this.state.currentLocation,"precipitation"),
-                windData: sevenDayCalculations.dailyData(this.state.currentLocation,"wind"),
-                description: sevenDayCalculations.dailyData(this.state.currentLocation,"description")
-            })  
-} */
+        /*let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
+        let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
+        let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
+        let description = sevenDayCalculations.dailyData(currentLocation,"description"); */
     
     render() {
        let currentLocation = this.props.Location;
@@ -57,10 +32,11 @@ export class SevenDayForecast extends React.Component {
         let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
         let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
         let description = sevenDayCalculations.dailyData(currentLocation,"description"); 
+        let data = this.props.SevenDayForecastData;
         return (
               <div>
                   <h1>{this.props.ForecastType}</h1>
-                  <h2 /*onChange={this.handleChange} */>{this.props.Location}</h2>
+                  <h2>{this.props.Location}</h2>
                   <table>
                       <tr>
                           {weekdayHeaders}
@@ -77,6 +53,9 @@ export class SevenDayForecast extends React.Component {
                       <tr>
                           {description}
                       </tr> 
+                      <tr>
+                         <td>{data}</td>
+                      </tr>
                   </table>
               </div>
         )
