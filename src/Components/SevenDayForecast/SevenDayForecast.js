@@ -8,17 +8,32 @@ import {sevenDayCalculations} from '../../Util/Helpers';
 export class SevenDayForecast extends React.Component {
 
     componentDidMount() {
-        /* let currentLocation = this.props.Location;
-        let collectedData
-        let weekdayHeaders = sevenDayCalculations.weekdayTable;
-        for(let i=0; i<3; i++){
-            let currentDataType = sevenDayCalculations.dataTypeIndex[i];
-            let rowOfData = sevenDayCalculations.dailyData(currentLocation,currentDataType);
-            collectedData.push(rowOfData) 
-        }
-        let collectedDataArray = collectedData.map(a=> a); */
-        this.props.updateSevenDayData("hello");
+        let currentLocation = this.props.Location;
+        let dayOfWeekData = sevenDayCalculations.weekdayTable;
+        let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
+        let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
+        let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
+        let descriptionData = sevenDayCalculations.dailyData(currentLocation,"description"); 
+
+
+        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData
+            ); 
     }
+
+    componentDidUpdate(prevProps){
+        if(this.props.Location !== prevProps.Location){
+            let currentLocation = this.props.Location;
+        let dayOfWeekData = sevenDayCalculations.weekdayTable;
+        let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
+        let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
+        let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
+        let descriptionData = sevenDayCalculations.dailyData(currentLocation,"description"); 
+
+
+        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData
+            );
+    }
+}
 
         /*let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
         let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
@@ -26,36 +41,34 @@ export class SevenDayForecast extends React.Component {
         let description = sevenDayCalculations.dailyData(currentLocation,"description"); */
     
     render() {
-       let currentLocation = this.props.Location;
+        /*let currentLocation = this.props.Location;
         let weekdayHeaders = sevenDayCalculations.weekdayTable;
         let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
         let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
         let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
         let description = sevenDayCalculations.dailyData(currentLocation,"description"); 
-        let data = this.props.SevenDayForecastData;
+        let data = this.props.SevenDayForecastData; */
         return (
               <div>
                   <h1>{this.props.ForecastType}</h1>
                   <h2>{this.props.Location}</h2>
                   <table>
                       <tr>
-                          {weekdayHeaders}
+                          {this.props.SDFDayOfWeekData}
                       </tr>  
                       <tr>
-                          {temperatureData}
+                          {this.props.SDFTemperatureData}
                       </tr>
                       <tr>
-                          {precipitationData}
+                          {this.props.SDFPrecipitationData}
                       </tr>
                       <tr>
-                          {windData}
+                          {this.props.SDFWindData}
                       </tr>
                       <tr>
-                          {description}
+                          {this.props.SDFDescriptionData}
                       </tr> 
-                      <tr>
-                         <td>{data}</td>
-                      </tr>
+                      
                   </table>
               </div>
         )

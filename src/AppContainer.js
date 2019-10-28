@@ -12,8 +12,12 @@ export class AppContainer extends React.Component {
             ForecastType: "",
             Location: "London",
             OneDayForecastData: [],
-            SevenDayForecastData: ""
-        }
+            SDFDayOfWeekData: [],
+            SDFTemperatureData: [],
+            SDFPrecipitationData: [],
+            SDFWindData: [],
+            SDFDescriptionData: []
+            }
     }
 
     updateOneDayData = newData => {
@@ -22,9 +26,13 @@ export class AppContainer extends React.Component {
         })
     }
 
-    updateSevenDayData = newData => {
+    updateSevenDayData = (dayOfWeekData,temperatureData,precipitationData,windData,description) => {
         this.setState({
-            SevenDayForecastData: newData
+            SDFDayOfWeekData: dayOfWeekData,
+            SDFTemperatureData: temperatureData,
+            SDFPrecipitationData: precipitationData,
+            SDFWindData: windData,
+            SDFDescriptionData: description,
         })
     }
 
@@ -52,7 +60,12 @@ export class AppContainer extends React.Component {
             Location={this.state.Location} 
             ForecastType={this.state.ForecastType}
             updateSevenDayData={this.updateSevenDayData} 
-            SevenDayForecast={this.state.SevenDayForecastData} />
+            SDFDayOfWeekData={this.state.SDFDayOfWeekData}
+            SDFTemperatureData={this.state.SDFTemperatureData}
+            SDFPrecipitationData={this.state.SDFPrecipitationData}
+            SDFWindData={this.state.SDFWindData}
+            SDFDescriptionData={this.state.SDFDescriptionData}
+             />
 
             <OneDayForecast Location={this.state.Location} 
             ForecastType={this.state.ForecastType} 
