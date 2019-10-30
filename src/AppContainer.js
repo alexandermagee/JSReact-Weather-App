@@ -3,7 +3,7 @@ import {SearchBar} from './Components/SearchBar/SearchBar';
 import {ForecastType} from './Components/ForecastType/ForecastType';
 import {SevenDayForecast} from './Components/SevenDayForecast/SevenDayForecast';
 import {OneDayForecast} from './Components/OneDayForecast/OneDayForecast';
-import {oneDayCalculations} from './Util/Helpers';
+import './App.css';
 
 export class AppContainer extends React.Component {
     constructor(props){
@@ -12,6 +12,7 @@ export class AppContainer extends React.Component {
             ForecastType: "",
             Location: "London",
             OneDayForecastData: [],
+            ODFIcons: [],
             SDFDayOfWeekData: [],
             SDFTemperatureData: [],
             SDFPrecipitationData: [],
@@ -20,9 +21,10 @@ export class AppContainer extends React.Component {
             }
     }
 
-    updateOneDayData = newData => {
+    updateOneDayData = (descriptions,icons) => {
         this.setState({
-            OneDayForecastData: newData
+            OneDayForecastData: descriptions,
+            ODFIcons: icons
         })
     }
 
@@ -70,9 +72,11 @@ export class AppContainer extends React.Component {
             <OneDayForecast Location={this.state.Location} 
             ForecastType={this.state.ForecastType} 
             updateOneDayData={this.updateOneDayData} 
-            OneDayForecastData={this.state.OneDayForecastData}/>
-
+            OneDayForecastData={this.state.OneDayForecastData}
+            ODFIcons={this.state.ODFIcons}/>
             </div>
+
+           
         )
     }
 }

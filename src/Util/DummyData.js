@@ -186,7 +186,7 @@ export const oneDayDummyData = {
     "0200" : [4,4,12,"Cloudy"],
     "0300" : [2,8,11,"Cloudy"],
     "0400" : [3,8,30,"Chance of Showers"],
-    "0500" : [6,8,70,"Shower"],
+    "0500" : [6,8,70,"Showers"],
     "0600" : [7,4,60,"Showers"],
     "0700" : [7,6,40,"Chance of Showers"],
     "0800" : [7,4,19,"Cloudy"],
