@@ -20,3 +20,6 @@ tr :nth-child(0){
   font-weight: bold;
 }
 
+.forecastTypeHidden {
+  visibility: none;
+}

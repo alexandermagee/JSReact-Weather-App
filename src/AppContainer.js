@@ -17,7 +17,8 @@ export class AppContainer extends React.Component {
             SDFTemperatureData: [],
             SDFPrecipitationData: [],
             SDFWindData: [],
-            SDFDescriptionData: []
+            SDFDescriptionData: [],
+            SDFIcons: []
             }
     }
 
@@ -28,13 +29,14 @@ export class AppContainer extends React.Component {
         })
     }
 
-    updateSevenDayData = (dayOfWeekData,temperatureData,precipitationData,windData,description) => {
+    updateSevenDayData = (dayOfWeekData,temperatureData,precipitationData,windData,description,icons) => {
         this.setState({
             SDFDayOfWeekData: dayOfWeekData,
             SDFTemperatureData: temperatureData,
             SDFPrecipitationData: precipitationData,
             SDFWindData: windData,
             SDFDescriptionData: description,
+            SDFIcons: icons
         })
     }
 
@@ -67,6 +69,7 @@ export class AppContainer extends React.Component {
             SDFPrecipitationData={this.state.SDFPrecipitationData}
             SDFWindData={this.state.SDFWindData}
             SDFDescriptionData={this.state.SDFDescriptionData}
+            SDFIcons={this.state.SDFIcons}
              />
 
             <OneDayForecast Location={this.state.Location} 

@@ -51,11 +51,6 @@ export const oneDayCalculations = {
       return (Object.keys(oneDayDummyData.London)).sort((a,b)=>a-b).map(hour => <th>{hour}</th>)
     },
 
- /* hourlyData (location,dataType,hour) {
-    let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);
-    return oneDayDummyData[location][hour][requestedDataIndex];
-  }, */
-
   hourlyDataArray (location,dataType,hour) {
     let requestedDataIndex = this.dataTypeIndex.indexOf(dataType);
     let hoursInDay = Object.keys(oneDayDummyData.London).sort((a,b)=>a-b).map(hour => hour); 
@@ -79,8 +74,7 @@ export const weatherIcons = {
   "Showers": ShowersIcon
   },
   
-iconTableRow(location) {
-  /* let descriptionList = oneDayCalculations.hourlyDataArray(location,"description"); */
+generateOneDayIcons(location) {
   let hoursInDay = Object.keys(oneDayDummyData.London).sort((a,b)=>a-b).map(hour => hour);
   let collectedArray = [];
   for(let i=0; i<hoursInDay.length;i++){
@@ -88,15 +82,30 @@ iconTableRow(location) {
     collectedArray.push(oneDayDummyData[location][currentHour][3]) 
   }
 
-  console.log(collectedArray, collectedArray.length);
   let iconArray = [];
   for(let i=0; i<collectedArray.length; i++){
     let generatedIcon = this.icons[collectedArray[i]];
     iconArray.push(generatedIcon);
   } 
-  /* return iconArray.map(data => <td><img src={data} alt="Weather icon"></img></td>) */
+  
+  return iconArray.map(data => <td><img src={data} alt="weather icon" width="80" ></img></td>)
+},
+
+generateSevenDayIcons(location) {
+  let daysInWeek = sevenDayCalculations.currentIndex;
+  console.log(daysInWeek);
+  let collectedArray = [];
+  for(let i=0; i<daysInWeek.length; i++){
+    let currentDay = daysInWeek[i];
+    collectedArray.push(sevenDayDummyData[location][currentDay]["description"]);
+  }
+  console.log(collectedArray);
+  let iconArray = [];
+  for(let i=0; i<collectedArray.length; i++){
+    let generatedIcon = this.icons[collectedArray[i]];
+    iconArray.push(generatedIcon);
+  } 
   console.log(iconArray);
-  console.log(iconArray.map(data => <td><img src={data} alt="weather icon"></img></td>))
   return iconArray.map(data => <td><img src={data} alt="weather icon" width="80" ></img></td>)
 }
 

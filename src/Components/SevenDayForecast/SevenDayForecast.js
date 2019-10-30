@@ -1,5 +1,5 @@
 import React from 'react';
-import {sevenDayCalculations} from '../../Util/Helpers';
+import {sevenDayCalculations,weatherIcons} from '../../Util/Helpers';
 
 /*<div>Icons made by <a href="https://www.flaticon.com/<?=_('authors').'/'?>good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a></div>*/
 
@@ -11,9 +11,10 @@ export class SevenDayForecast extends React.Component {
         let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
         let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
         let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
-        let descriptionData = sevenDayCalculations.dailyData(currentLocation,"description"); 
+        let descriptionData = sevenDayCalculations.dailyData(currentLocation,"description");
+        let icons = weatherIcons.generateSevenDayIcons(currentLocation); 
 
-        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData
+        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData,icons
             ); 
 
     }
@@ -26,8 +27,9 @@ export class SevenDayForecast extends React.Component {
         let precipitationData = sevenDayCalculations.dailyData(currentLocation,"precipitation");
         let windData = sevenDayCalculations.dailyData(currentLocation,"wind");
         let descriptionData = sevenDayCalculations.dailyData(currentLocation,"description"); 
+        let icons = weatherIcons.generateSevenDayIcons(currentLocation);
 
-        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData
+        this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData,icons
             );
     }
 }
@@ -54,6 +56,10 @@ export class SevenDayForecast extends React.Component {
                       </tr>
                       <tr>
                          <td>Weather:</td>{this.props.SDFDescriptionData}
+                      </tr> 
+                      <tr>
+                          {<td></td>}
+                          {this.props.SDFIcons}
                       </tr> 
                       </tbody>
                   </table>

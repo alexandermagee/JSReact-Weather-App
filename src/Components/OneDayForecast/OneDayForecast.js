@@ -6,14 +6,14 @@ export class OneDayForecast extends React.Component {
 
     componentDidMount() {
         let descriptionsData = oneDayCalculations.hourlyDataArray(this.props.Location,"description").map(a => a);
-        let iconsData = weatherIcons.iconTableRow(this.props.Location);
+        let iconsData = weatherIcons.generateOneDayIcons(this.props.Location);
         this.props.updateOneDayData(descriptionsData,iconsData);
     }
 
     componentDidUpdate(prevProps) {
         if(this.props.Location !== prevProps.Location){
         let newData = oneDayCalculations.hourlyDataArray(this.props.Location,"description")
-        let iconsData = weatherIcons.iconTableRow(this.props.Location);
+        let iconsData = weatherIcons.generateOneDayIcons(this.props.Location);
         this.props.updateOneDayData(newData,iconsData);
         }
     }
