@@ -21,5 +21,9 @@ tr :nth-child(0){
 }
 
 .forecastTypeHidden {
-  visibility: none;
+  display: none; 
+}
+
+.forecastTypeActive {
+  display: block
 }

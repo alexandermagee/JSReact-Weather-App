@@ -16,11 +16,12 @@ export class SevenDayForecast extends React.Component {
 
         this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData,icons
             ); 
+        
 
     }
 
     componentDidUpdate(prevProps){
-        if(this.props.Location !== prevProps.Location){
+        if(this.props.Location !== prevProps.Location || this.props.ForecastType !== prevProps.ForecastType){
         let currentLocation = this.props.Location;
         let dayOfWeekData = sevenDayCalculations.weekdayTable;
         let temperatureData = sevenDayCalculations.dailyData(currentLocation,"temperature");
@@ -31,13 +32,14 @@ export class SevenDayForecast extends React.Component {
 
         this.props.updateSevenDayData(dayOfWeekData,temperatureData,precipitationData,windData,descriptionData,icons
             );
+        this.props.setSDFActive();
     }
 }
 
     render() {
-
+        let isClassActive = this.props.SDFVisibility;
         return (
-              <div>
+              <div className={isClassActive}>
                   <h1>{this.props.ForecastType}</h1>
                   <h2>Location: {this.props.Location}</h2>
                   <table>
